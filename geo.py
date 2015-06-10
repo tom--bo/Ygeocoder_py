@@ -18,7 +18,11 @@ def get_Coordinates(location_name):
         print(i["Geometry"]["Coordinates"])
 
 if __name__ == "__main__":
-    get_Coordinates(u"東京都港区芝公園4‐2‐8")
-
-
+    args = sys.argv
+    if args[1] == None:
+        print("引数がない")
+        exit
+    else:
+        get_Coordinates(args[1])
+        
 
