@@ -19,10 +19,9 @@ def get_Coordinates(location_name):
 
 if __name__ == "__main__":
     args = sys.argv
-    if args[1] == None:
-        print("引数がない")
-        exit
-    else:
-        get_Coordinates(args[1])
+    len = len(sys.argv)
+
+    for i in range(1, len):
+        get_Coordinates(args[i])
         
 
