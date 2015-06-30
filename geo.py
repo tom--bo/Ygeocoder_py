@@ -13,15 +13,23 @@ def get_Coordinates(location_name):
     url = "http://geo.search.olp.yahooapis.jp/OpenLocalPlatform/V1/geoCoder"
     r = requests.get(url, params=payload)
     res = r.json()
-
-    for i in res["Feature"]:
-        print(i["Geometry"]["Coordinates"])
+    if res.get("Feature"):
+        for i in res["Feature"]:
+            print(location_name + i["Geometry"]["Coordinates"])
+    else:
+        print(location_name + "null,null")
 
 if __name__ == "__main__":
     args = sys.argv
     len = len(sys.argv)
 
     for i in range(1, len):
-        get_Coordinates(args[i])
+        dir = args[i]
         
+        with open(dir, mode='r') as f:
+            for line in f:
+                line = line.replace('\n', ',')
+                get_Coordinates(line)
+
+
 
